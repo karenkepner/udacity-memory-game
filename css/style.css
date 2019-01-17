@@ -14,3 +14,8 @@ body {
 h1 {
   font-size: 3em;
 }
+
+#game-board {
+  background-color: red;
+  border-radius: 5px;
+}
