@@ -25,15 +25,36 @@ h1 {
   grid-template-columns: auto auto auto auto;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+  height: 80vh;
   padding: 10px;
 }
 
-.card {
+#game-board .card {
   padding: 10px;
   background-color: red;
   border-radius: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0;
+}
+
+#game-board .card.open {
+  transform: rotateY(180);
+  background: greenyellow;
+  cursor: default;
+}
+
+#game-board .card.show {
+  font-size: 2em;
+  background-color:#0077B5;
+}
+
+#game-board .card.match {
+  font-size: 2em;
+  background-color: rebeccapurple;
 }
 
 .fa {
   font-size: 3em;
 }
+
