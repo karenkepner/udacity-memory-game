@@ -16,6 +16,24 @@ h1 {
 }
 
 #game-board {
-  background-color: red;
+  background-color: #ababab;
   border-radius: 5px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  padding: 10px;
+}
+
+.card {
+  padding: 10px;
+  background-color: red;
+  border-radius: 10px;
+}
+
+.fa {
+  font-size: 3em;
 }
