@@ -9,6 +9,7 @@ html {
 body {
   font-family: 'Luckiest Guy', cursive;
   text-align: center;
+  background-color: #ababab;
 }
 
 h1 {
@@ -16,7 +17,7 @@ h1 {
 }
 
 #game-board {
-  background-color: #ababab;
+  background-color: #fff;
   border-radius: 5px;
 }
 
