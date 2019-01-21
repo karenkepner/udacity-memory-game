@@ -6,6 +6,8 @@ let board = document.getElementById('game-board');
 let pickedCards = [];
 let moves = 0;
 let matches = 0;
+let movesCount = document.getElementById('moves');
+let star = 3;
 
 function generateCards(icon) {
   return `<div class="card col3" data-card=${icon}><i class="fa ${icon}"></i></div>`;
@@ -25,6 +27,7 @@ function clickCards() {
       et.classList.add('show', 'open');
     }
     compareCards(pickedCards);
+    updateScore();
     winYet();
   })
 }
@@ -67,6 +70,16 @@ function winYet() {
 //add a timer for the game
 //add the star rating in the scoreboard
 //count the moves and add to scoreboard
+function updateScore() {
+  movesCount.innerText = moves;
+  if (moves > 6 && moves < 10) {
+    document.querySelector('#stars i:first-child').style.display = 'none';
+    star = 2;
+  } else if (moves > 20) {
+    document.querySelector('#stars i:nth-child(2)').style.display = 'none';
+    star = 1;
+  }
+}
 //add modal when the game is won showing the score and star rating
 
 startGame()
