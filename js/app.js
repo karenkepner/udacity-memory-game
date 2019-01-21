@@ -5,6 +5,7 @@ let cardIcon = [
 let board = document.getElementById('game-board');
 let pickedCards = [];
 let moves = 0;
+let matches = 0;
 
 function generateCards(icon) {
   return `<div class="card col3" data-card=${icon}><i class="fa ${icon}"></i></div>`;
@@ -24,7 +25,7 @@ function clickCards() {
       et.classList.add('show', 'open');
     }
     compareCards(pickedCards);
-    
+    winYet();
   })
 }
 
@@ -36,6 +37,7 @@ function compareCards(cards) {
       //theres a match, add match class to the item.
       cards[0].classList.add('match');
       cards[1].classList.add('match');
+      matches++;
       //reset the picked cards array for the next guess.
       pickedCards = [];
     } else {
@@ -45,16 +47,22 @@ function compareCards(cards) {
         //reset the picked cards array for the next guess.
         pickedCards = []
       }, 1000);
-      
     };
     moves++;
   }
-  
 }
 
 //if they match, assign match class
 //if they don't match, hide them again after some animation and a few seconds
 //only allow two cards to be shown at once
+//check if all cards have been matched yet
+function winYet() {
+  if (matches === 8) {
+    //stop game, you win.
+    //open modal
+    alert("you win!");
+  }
+}
 //make all the boxes stay the same size
 //add a timer for the game
 //add the star rating in the scoreboard
