@@ -8,20 +8,36 @@ let moves = 0;
 let matches = 0;
 let movesCount = document.getElementById('moves');
 let star = 3;
+let timeKeeper = document.querySelector('.timer');
+let gameRunning = false;
+let intervalID = window.setInterval(startTimer, 1000);
+let sec = 0;
+let min = 0;
+let hour = 0;
+
+(function() {
+  startGame()
+})();
 
 function generateCards(icon) {
   return `<div class="card col3" data-card=${icon}><i class="fa ${icon}"></i></div>`;
 }
 
 function startGame() {
-  let deck = shuffle(cardIcon).map(function(cardIcon) {return generateCards(cardIcon)});
+  let deck = shuffle(cardIcon).map(function(cardIcon) {
+    return generateCards(cardIcon)
+    });
   board.innerHTML = deck.join('');
+  gameRunning = true;
   clickCards();
 }
 
 function clickCards() {
   board.addEventListener('click', function(event) {
     let et = event.target;
+    if (gameRunning === true && moves < 1) {
+      startTimer();
+    }
     if (et.classList.contains('card') && !et.classList.contains('open') && !et.classList.contains('show') && !et.classList.contains('match') && pickedCards.length < 2) {
       pickedCards.push(et);
       et.classList.add('show', 'open');
@@ -32,7 +48,6 @@ function clickCards() {
   })
 }
 
-//compare cards
 function compareCards(cards) {
   if (pickedCards.length === 2) {
     if (cards[0].dataset.card === cards[1].dataset.card) {
@@ -55,19 +70,50 @@ function compareCards(cards) {
   }
 }
 
-//if they match, assign match class
-//if they don't match, hide them again after some animation and a few seconds
-//only allow two cards to be shown at once
-//check if all cards have been matched yet
 function winYet() {
   if (matches === 8) {
-    //stop game, you win.
-    //open modal
-    alert("you win!");
+    let gameDuration = timeKeeper.innerText;
+    gameRunning = false;
+    alert(`You win! Moves Taken: ${moves} Star Rating: ${star} Game Time: ${gameDuration}\n
+    Would you like to play again?`);
+    resetTimer();
+    startGame();
   }
 }
 //make all the boxes stay the same size
 //add a timer for the game
+//based on Daniel Hug's (https://jsfiddle.net/Daniel_Hug/pvk6p/) Thanks!
+
+function startTimer() {
+  if (gameRunning === true) {
+    sec++;
+    if (sec > 60) {
+      sec = 0;
+      min++;
+    } else if (min > 60) {
+      min = 0;
+      hour++;
+    }
+    timeKeeper.textContent = (hour ? (hour >9 ? hour : "0" + hour) : "00") + ":" + (min ? (min > 9 ? min : "0" + min) : "00") + ':' + (sec > 9 ? sec : "0" + sec);
+    }
+  };
+
+function resetTimer() {
+  clearInterval(intervalID);
+  resetCounters();
+}
+
+//sets timer and counters back to zero for new game.
+function resetCounters() {
+  sec = 0;
+  min = 0;
+  hour = 0;
+  timeKeeper.textContent = "00:00:00";
+  matches = 0;
+  moves = 0;
+  star = 3;
+  gameRunning = false;
+}
 //add the star rating in the scoreboard
 //count the moves and add to scoreboard
 function updateScore() {
@@ -80,10 +126,6 @@ function updateScore() {
     star = 1;
   }
 }
-//add modal when the game is won showing the score and star rating
-
-startGame()
-//shuffle and place cards on pageload
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
