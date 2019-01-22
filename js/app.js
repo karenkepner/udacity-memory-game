@@ -14,6 +14,7 @@ let intervalID = window.setInterval(startTimer, 1000);
 let sec = 0;
 let min = 0;
 let hour = 0;
+let reset = document.querySelector('.reset');
 
 (function() {
   startGame()
@@ -56,7 +57,6 @@ function compareCards(cards) {
       cards[0].classList.add('match');
       cards[1].classList.add('match');
       matches++;
-      //reset the picked cards array for the next guess.
       pickedCards = [];
     } else {
       setTimeout( () => { 
@@ -80,8 +80,7 @@ function winYet() {
     startGame();
   }
 }
-//make all the boxes stay the same size
-//add a timer for the game
+
 //based on Daniel Hug's (https://jsfiddle.net/Daniel_Hug/pvk6p/) Thanks!
 
 function startTimer() {
@@ -114,8 +113,7 @@ function resetCounters() {
   star = 3;
   gameRunning = false;
 }
-//add the star rating in the scoreboard
-//count the moves and add to scoreboard
+
 function updateScore() {
   movesCount.innerText = moves;
   if (moves > 6 && moves < 10) {
@@ -126,6 +124,10 @@ function updateScore() {
     star = 1;
   }
 }
+
+reset.addEventListener('click', function() {
+  location.reload();
+})
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
