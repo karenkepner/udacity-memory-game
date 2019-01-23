@@ -53,7 +53,6 @@ function compareCards(cards) {
   if (pickedCards.length === 2) {
     if (cards[0].dataset.card === cards[1].dataset.card) {
       console.log('compare is true')
-      //theres a match, add match class to the item.
       cards[0].classList.add('match');
       cards[1].classList.add('match');
       matches++;
@@ -62,7 +61,6 @@ function compareCards(cards) {
       setTimeout( () => { 
         cards[0].classList.remove('show', 'open');
         cards[1].classList.remove('show', 'open');
-        //reset the picked cards array for the next guess.
         pickedCards = []
       }, 1000);
     };

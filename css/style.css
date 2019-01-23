@@ -36,6 +36,7 @@ h1 {
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   height: 80vh;
+  width: 100%;
   padding: 10px;
 }
 
@@ -43,15 +44,16 @@ h1 {
   padding: 10px;
   background-color: red;
   border-radius: 10px;
-  text-align: center;
-  vertical-align: middle;
   font-size: 0;
+  box-shadow: 3px 3px 2px grey;
 }
 
 #game-board .card.open {
-  transform: rotateY(180);
-  background: greenyellow;
+  /* transform: rotateY(180); */
+  /* background: greenyellow; */
   cursor: default;
+  /* transition: all .1s ease-in-out;
+  transform: scale(1.1); */
 }
 
 #game-board .card.show {
@@ -61,12 +63,14 @@ h1 {
 
 #game-board .card.match {
   font-size: 2em;
-  background-color: rebeccapurple;
+  background: linear-gradient(red , blue);
+  ;
 }
 
 .fa {
-  align-content: center;
+  /* align-content: center; */
   font-size: 3em;
+  text-align: center
 }
 
 .hide {
