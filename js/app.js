@@ -39,8 +39,12 @@ function clickCards() {
     if (gameRunning === true && moves < 1) {
       startTimer();
     }
+    if (et.classList.contains('fa')) {
+      et = et.parentElement;
+    }
     if (et.classList.contains('card') && !et.classList.contains('open') && !et.classList.contains('show') && !et.classList.contains('match') && pickedCards.length < 2) {
       pickedCards.push(et);
+      console.log('event.target:', et);
       et.classList.add('show', 'open');
     }
     compareCards(pickedCards);

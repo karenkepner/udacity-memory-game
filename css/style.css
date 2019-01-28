@@ -44,31 +44,29 @@ h1 {
   padding: 10px;
   background-color: red;
   border-radius: 10px;
-  font-size: 0;
+  font-size: 2em;
+  color: red;
   box-shadow: 3px 3px 2px grey;
 }
 
 #game-board .card.open {
-  /* transform: rotateY(180); */
-  /* background: greenyellow; */
+  color: black;
+  background-color:#0077B5;
+  transform: rotateY(90);
   cursor: default;
-  /* transition: all .1s ease-in-out;
-  transform: scale(1.1); */
 }
 
 #game-board .card.show {
-  font-size: 2em;
+  color: black;
   background-color:#0077B5;
 }
 
 #game-board .card.match {
-  font-size: 2em;
+  color: black;
   background: linear-gradient(red , blue);
-  ;
 }
 
 .fa {
-  /* align-content: center; */
   font-size: 3em;
   text-align: center
 }
