@@ -42,10 +42,10 @@ h1 {
 
 #game-board .card {
   padding: 10px;
-  background-color: red;
+  background-color: #a51e1e;
   border-radius: 10px;
   font-size: 2em;
-  color: red;
+  color: #a51e1e;
   box-shadow: 3px 3px 2px grey;
 }
 
@@ -63,7 +63,7 @@ h1 {
 
 #game-board .card.match {
   color: black;
-  background: linear-gradient(red , blue);
+  background: linear-gradient(#a51e1e , blue);
 }
 
 .fa {
